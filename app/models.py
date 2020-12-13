@@ -41,3 +41,19 @@ class User(UserMixin,db.Model):
 
 
 
+class Comment(db.Model):
+    __tablename__ = 'comments'
+
+    id = db.Column(db.Integer,primary_key = True)
+    comment = db.Column(db.String(1000))
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    quote = db.Column(db.Integer,db.ForeignKey("quote.id"))
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comments(cls,quote):
+        comments = Comment.query.filter_by(quote_id=quote).all()
+        return comments
