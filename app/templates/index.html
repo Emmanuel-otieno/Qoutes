@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+ {% import 'macros.html' as macro %}
+<!-- Styles block -->
+
+{%block styles%} {{ super() }}
+
+
+{%endblock%}
+<!-- Content block -->
+{%block content%}
+
+  <div class="container landing" style="height: 100%">
+    <div class="row">
+      {% if current_user.is_authenticated %}
+      <div class="col-md-3">
+        <a
+          class="btn btn-sm btn-info"
+          id="ref"
+          href="{{url_for('main.new_quote')}}"
+          >Post</a
+        >
+      </div>
+      {% endif %}
+      <div class="col-md-9" style="color: greenyellow;" text-center >
+        <h1 style="font-style:cursive ;">{{ title}}</h1>
+        <h1>{{ quotes.author}}</h1>
+        <h2 style="color: aqua;">{{ quotes.quote}}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8"></div>
+    </div>
+    {%endblock%}
+  </div>
+</div>
