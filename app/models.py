@@ -57,3 +57,38 @@ class Comment(db.Model):
     def get_comments(cls,quote):
         comments = Comment.query.filter_by(quote_id=quote).all()
         return comments
+
+
+
+class Quote(db.Model):
+    __tablename__ = 'quote'
+
+    id = db.Column(db.Integer,primary_key = True)
+    quote_title = db.Column(db.String)
+    quote_content = db.Column(db.String(1000))
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+   
+    comments = db.relationship('Comment',backref =  'quote_id',lazy = "dynamic")
+
+    def save_quote(self):
+        db.session.add(self)
+        db.session.commit()
+
+
+    @classmethod
+    def get_quote(cls,id):
+        quote = Quote.query.filter_by(id=id).first()
+
+        return quote
+
+    @classmethod
+    def count_quote(cls,uname):
+        user = User.query.filter_by(username=uname).first()
+        quote = quote.query.filter_by(user_id=user.id).all()
+
+        quote_count = 0
+        for quote in quote:
+            quote_count += 1
+
+        return _count
