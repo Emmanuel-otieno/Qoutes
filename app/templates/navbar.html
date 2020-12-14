@@ -1,5 +1,5 @@
 <nav class="mb-1 navbar navbar-expand-lg navbar-light navbarbg">
-    <a class="navbar-brand" href="{{url_for('main.index')}}"><strong>Random Quotes</strong> </a>
+    <a class="navbar-brand" href="{{url_for('main.index')}}"><strong>Blogs & Quotes</strong> </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,7 +14,7 @@
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link" href="{{url_for('main.new_quote')}}">New Quote</a>
+                    <a class="nav-link" href="{{url_for('main.new_quote')}}">My Quote</a>
                   </li>
             </ul>
         <ul class="navbar-nav ml-auto">
@@ -33,9 +33,7 @@
               <li class="nav-item">
                   <a  class="nav-link mr-1" href="{{url_for('auth.login')}}"><i class="fas fa-user-plus"></i></i>&nbsp; <strong>Sign Up</strong></a>
               </li>
-              <!-- <li class="nav-item">
-                  <a  class="nav-link mr-5" href="{{url_for('auth.login')}}" ><i class="fas fa-sign-in-alt "></i>&nbsp; <strong>Log In</strong></a>
-              </li> -->
+              
             {%endif%}
 
         </ul>
