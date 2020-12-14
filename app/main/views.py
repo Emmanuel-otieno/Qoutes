@@ -71,7 +71,7 @@ def quotes():
     View root page function that returns the index page and its data
     '''
     quotes = Quote.query.all()
-    return render_template('all_quotes.html', quotes=quotes)
+    return render_template('post_quote.html', quotes=quotes)
 
 @main.route('/quote/new', methods = ['GET','POST'])
 @login_required
